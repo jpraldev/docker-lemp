@@ -1,0 +1,8 @@
+certs/*
+db/*
+logs/*
+www/*
+conf/custom/*
+.env
+.DS_Store
+!.keepme

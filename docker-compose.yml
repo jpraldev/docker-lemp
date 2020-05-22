@@ -1,0 +1,46 @@
+version: '3.7'
+services:
+  web:
+    environment: 
+      - BASE_DOMAIN=${BASE_DOMAIN}
+    build:
+      args:
+        - HOSTS=${HOSTS}
+        - TIMEZONE=${TIMEZONE}
+        - BASE_DOMAIN=${BASE_DOMAIN}
+      context: .
+      dockerfile: ./dockerfiles/nginx/Dockerfile
+    hostname: ${BASE_DOMAIN}
+    container_name: nginx
+    depends_on:
+      - php
+    volumes:
+      - ./www:/usr/share/nginx/html
+      - ./logs:/var/log/nginx
+      - ./certs:/etc/nginx/certs
+    ports:
+      - 80:80
+      - 443:443
+  php:
+    build:
+      args:
+        - BUILD_WITH_GD=${BUILD_WITH_GD}
+        - TIMEZONE=${TIMEZONE}
+      context: .
+      dockerfile: ./dockerfiles/php/Dockerfile
+    container_name: php
+    volumes:
+      - ./www:/var/www/html
+    ports:
+      - 9000:9000
+  db:
+    container_name: mysql
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ./db:/var/lib/mysql:delegated
+    user: ${UID}:${GID}
+    ports:
+      - 3306:3306
