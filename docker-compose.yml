@@ -25,6 +25,8 @@ services:
     build:
       args:
         - BUILD_WITH_GD=${BUILD_WITH_GD}
+        - BUILD_WITH_LDAP=${BUILD_WITH_LDAP}
+        - BUILD_WITH_INTL=${BUILD_WITH_INTL}
         - TIMEZONE=${TIMEZONE}
       context: .
       dockerfile: ./dockerfiles/php/Dockerfile

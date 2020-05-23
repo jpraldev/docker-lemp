@@ -5,6 +5,9 @@ ARG BUILD_WITH_GD=${BUILD_WITH_GD}
 ARG BUILD_WITH_LDAP=${BUILD_WITH_LDAP}
 ARG BUILD_WITH_INTL=${BUILD_WITH_INTL}
 
+# This will allow composer to use cache when executed by a host user
+RUN mkdir /.composer && chmod 777 /.composer
+
 # Enable logs
 RUN sed -i "s/\;php_admin_flag\[log_errors\] = on/php_admin_flag\[log_errors\] = on/g" /usr/local/etc/php-fpm.d/www.conf
 
