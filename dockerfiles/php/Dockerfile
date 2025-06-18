@@ -1,4 +1,4 @@
-FROM php:fpm-alpine3.11
+FROM php:fpm-alpine
 
 ARG TIMEZONE=${TIMEZONE}
 ARG BUILD_WITH_GD=${BUILD_WITH_GD}

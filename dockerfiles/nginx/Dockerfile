@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:mainline-alpine-slim
 
 ARG HOSTS=${HOSTS}
 ARG TIMEZONE=${TIMEZONE}
