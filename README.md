@@ -4,8 +4,8 @@ This is a Docker-based LEMP (Linux/NGINX/MySQL/PHP) stack for web development th
 
 ### Main features
 
-- NGINX 1.17 on Alpine with SSL support, independent logging per site and `gzip` enabled
-- PHP FPM 7.4.6 on Alpine, with `MySQLi` and `PDO` extensions installed by default
+- NGINX 1.27.5 on Alpine with SSL support, independent logging per site and `gzip` enabled
+- PHP FPM 8.4.8 on Alpine, with `MySQLi` and `PDO` extensions installed by default
 - MariaDB's official image 10.4.13, with a mounted volume on `/db` for persistance
 - Easily customizable scripts and config files, as they sit on mounted `/scripts` and `/conf` folders
 - NGINX and PHP logs are avilable on the `/logs` folder, accessible from the host machine
